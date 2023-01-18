@@ -1,3 +1,4 @@
+import { TwitterModule } from './twitter/twitter.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
@@ -11,6 +12,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       isGlobal: true,
     }),
     UsuarioModule,
+    TwitterModule
   ],
   controllers: [AppController],
   providers: [...databaseProviders, AppService],

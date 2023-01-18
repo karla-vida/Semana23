@@ -1,9 +1,15 @@
-import { UsuarioEntity } from './usuario.entity';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { UsuarioEntity } from '../../usuario/entities/usuario.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 @Entity({ name: 'tweet' })
 export class TweetEntity {
   @PrimaryGeneratedColumn()
-id_tweet: number;
+  id_tweet: number;
 
   @Column()
   texto: string;
@@ -11,7 +17,7 @@ id_tweet: number;
   @Column()
   data: string;
 
-  @JoinColumn({name:'id_usuario'})
+  @JoinColumn({ name: 'id_usuario' })
   @ManyToOne(() => UsuarioEntity, (usuario) => usuario.tweets)
   usuario: UsuarioEntity;
 }

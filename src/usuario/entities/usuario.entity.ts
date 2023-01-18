@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { TweetEntity } from './tweet.entity';
+import { TweetEntity } from '../../twitter/entities/tweet.entity';
 @Entity({ name: 'usuario' })
 export class UsuarioEntity {
   @PrimaryGeneratedColumn()
