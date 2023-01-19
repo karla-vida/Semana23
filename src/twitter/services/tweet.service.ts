@@ -1,3 +1,4 @@
+import { UsuarioEntity } from './../../usuario/entities/usuario.entity';
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InserirTweetDTO } from '../dto/inserir-tweet.dto';
@@ -26,4 +27,26 @@ export class TweetService {
       }
     });
   }
+
+  async listarTwittes(userId: number): Promise<TweetEntity[]> {
+    const user = new UsuarioEntity();
+    user.id_usuario = userId;
+    return new Promise(async (resolve, reject) => {
+    
+      try {
+        
+          resolve(
+            await (await this.tweetRepository.findBy({  usuario: user })).
+            sort((a,b)=> b.id_tweet - a.id_tweet),
+          );
+        
+       
+      } catch (error) {
+        reject(error);
+      }
+  }
+
+
+  )}
 }
+
